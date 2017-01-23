@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="something">
+
+    <input type="text" v-bind:value="something" v-on:input="something = $event.target.value">
+
+    <custom-input v-bind:value="something" v-on:input="something = arguments[0]"></custom-input>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            something: 'hello'
+        }
+    })
+</script>
+</body>
+</html>
+
+
+
+
+
+

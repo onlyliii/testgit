@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<template id="temp">
+    <div>
+        <h2>我是子组件的标题</h2>
+        <slot>
+            只有在没有要分发的内容时才会显示。
+        </slot>
+    </div>
+</template>
+<div id="app">
+    <div>
+        <h1>我是父组件的标题</h1>
+        <my-component>
+            <p>这是一些初始内容</p>
+            <p>这是更多的初始内容</p>
+        </my-component>
+    </div>
+</div>
+<script>
+Vue.component('myComponent',{
+    template: '#temp'
+})
+new Vue({
+    el: '#app'
+})
+</script>
+</body>
+</html>
+
+
+
+
+
+
