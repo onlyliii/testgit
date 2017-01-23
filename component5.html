@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+    <simple-counter></simple-counter>
+</div>
+
+<script>
+    var data = { counter: 0 }
+    Vue.component('simple-counter', {
+        template: '<button class="btn btn-default" v-on:click="counter += 1">{{counter}}</button>',
+        data: function () {
+            return data;
+        }
+    })
+    new Vue({
+        el: '#app'
+    })
+</script>
+</body>
+</html>

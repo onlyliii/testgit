@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>
+        <input type="text" v-model="parentMsg">
+        <br>
+        <child v-bind:message="parentMsg"></child>
+        <!--传递了一个字符串“1”-->
+        <comp some-porp="1"></comp>
+        <!--传递实际的数字-->
+        <comp v-bind:some-porp="1"></comp>
+    </div>
+</div>
+
+<script>
+    Vue.component('child', {
+       props: ['message'],
+       template: '<span>{{message}}</span>'
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            parentMsg: 'Message from parent'
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p class="alert alert-success">{{ total }}</p>
+    <button-counter v-on:click.native="incrementTotal"></button-counter>
+    <button-counter v-on:click.native="incrementTotal"></button-counter>
+</div>
+
+<script>
+Vue.component('button-counter',{
+    template: '<button v-on:click="increment" class="btn btn-info">{{counter}}</button>',
+    data: function () {
+        return {
+            counter: 0
+        }
+    },
+    methods: {
+        increment: function () {
+            this.counter += 1;
+        }
+    }
+});
+new Vue({
+    el: '#app',
+    data: {
+        total: 0
+    },
+    methods: {
+        incrementTotal: function () {
+            this.total += 1
+        }
+    }
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+

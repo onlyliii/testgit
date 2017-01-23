@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="example">
+    <my-component></my-component>
+</div>
+
+<script>
+    Vue.component('my-component', {
+        template: '<span>{{message}}</span>',
+        data: function () {
+            return {
+                message: 'hello'
+            }
+        }
+    })
+</script>
+</body>
+</html>
