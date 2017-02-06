@@ -8,15 +8,22 @@
 </head>
 <body>
 <div id="app">
-    {{ message }}
+    <ul class="pagination">
+        <li v-for="n in pageCount" v-bind:class="activeNumber === n ? 'active' : ''">
+            <a href="javascript:void(0)" >
+                {{ n }}
+            </a>
+        </li>
+    </ul>
 </div>
 <script>
-var exampleData = {
-    message: 'Hello World!'
-};
+
 new Vue({
     el: '#app',
-    data: exampleData
+    data: {
+        pageCount: 10,
+        activeNumber: 3
+    }
 })
 </script>
 </body>
