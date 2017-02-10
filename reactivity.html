@@ -7,11 +7,16 @@
     <script src="js/vue.js"></script>
 </head>
 <body>
-<div id="example">
-
+<div id="app">
+    <button class="btn btn-success">{{a}}</button>
 </div>
 <script>
-
+var vm = new Vue({
+    el: '#app',
+    data: {
+        a: 1
+    }
+});
 </script>
 </body>
 </html>
