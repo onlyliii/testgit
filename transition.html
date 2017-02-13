@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+    <style>
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity .5s
+        }
+        .fade-enter, .fade-leave-active {
+            opacity: 0
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="show = !show">
+        toggle
+    </button>
+    <transition name="fade">
+        <p v-if="show">hello transition!</p>
+    </transition>
+</div>
+<script>
+
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            show: true
+        }
+    });
+
+</script>
+</body>
+</html>

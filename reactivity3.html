@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>component</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <example ></example>
+</div>
+<script>
+    Vue.component('example',{
+        template: '<span @click="updateMessage">{{message}}</span>',
+        data: function () {
+            return {
+                message: 'not updated'
+            }
+        },
+        methods: {
+            updateMessage: function () {
+                this.message = 'updated';
+                console.log(this.$el.textContent); // '没有更新'
+                this.$nextTick(function () {
+                    console.log(this.$el.textContent); // '更新完成'
+                })
+            }
+        }
+    });
+
+    var vm = new Vue({
+        el: '#app'
+    });
+
+</script>
+</body>
+</html>
