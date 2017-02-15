@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-focus >
+</div>
+<script>
+    /*Vue.directive('focus', {
+        // 当绑定元素插入到DOM中
+        inserted: function (el) {
+            //聚焦元素
+            el.focus();
+        }
+    });
+    new Vue({
+        el: '#app'
+    })*/
+    new Vue({
+        el: '#app',
+        directives: {
+            focus: {
+                inserted: function (el) {
+                    el.focus();
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

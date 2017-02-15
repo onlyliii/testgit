@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="text"  >
+    <button class="btn btn-success" v-disable="disabled" v-bind:disabled="disabled" >
+        {{disabled ? 'Disabled' : 'Submit'}}
+    </button>
+</div>
+<script>
+    Vue.directive('disable',{
+        // 每当绑定的数据变化时，这个函数就被调用啦
+        update: function (value) {
+            // 这里的 this 指向一个directive对象。
+            // this.el 指向当前被绑定的DOM元素
+            // value则是所绑定数据的新值
+            this.el.disabled = !!value;
+        }
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            disabled: false
+        }
+    })
+</script>
+</body>
+</html>

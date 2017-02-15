@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<script>
+    var EmptyList = {};
+    var TableList = {};
+    var OrderedList = {};
+    var UnorderedList = {};
+    Vue.component('smart-list',{
+        functional: true,
+        render: function (createElement, context) {
+            function appropriateListComponent() {
+                var items = context.props.items;
+
+                if(item.length === 0)   return EmptyList;
+                if(typeof item[0] === 'object') return TableList;
+                if(context.props.isOrdered) return OrderedList;
+
+                return UnorderedList;
+            }
+            return createElement(
+                appropriateListComponent(),
+                context.data,
+                context.children
+            )
+        },
+        props: {
+            items:{
+                type: Array,
+                required: true
+            },
+            isOrdered: Boolean
+        }
+    })
+</script>
+</body>
+</html>

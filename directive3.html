@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="hook-arguments-example" v-demo:hello.a.b="message">
+
+</div>
+<script>
+    Vue.directive('demo', {
+        bind: function (el, binding, vnode) {
+            var s = JSON.stringify;
+            el.innerHTML =
+                'name:'     +s(binding.name) + '<br>' +
+                'value:'     +s(binding.value) + '<br>' +
+                'expression:'     +s(binding.expression) + '<br>' +
+                'argument:'     +s(binding.arg) + '<br>' +
+                'modifiers:'     +s(binding.modifiers) + '<br>' +
+                'vnode keys:'     +Object.keys(vnode).join(', ')
+        }
+    })
+
+    new Vue({
+        el: '#hook-arguments-example',
+        data: {
+            message: 'hello!'
+        }
+    })
+</script>
+</body>
+</html>
