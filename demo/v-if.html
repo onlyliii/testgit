@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>learn vue</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1 v-if="flag">Yes</h1>
+    <h1 v-else>No</h1>
+<!--因为 v-if 是一个指令，需要将它添加到一个元素上。但是如果我们想切换多个元素呢？此时我们可以把一个 <template> 元素当做包装元素，并在上面使用 v-if，最终的渲染结果不会包含它。-->
+    <template v-if="true">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+    </template>
+    <!-- v-else -->
+    <div v-if="Math.random() > 0.5">
+        Math.random() > 0.5
+    </div>
+    <div v-else><!--v-else 元素必须紧跟在 v-if 元素或者 v-else-if的后面——否则它不能被识别-->
+        Math.random() < 0.5
+    </div>
+    <!--v-else-if-->
+    <div v-if="type === 'A'">
+        A
+    </div>
+    <div v-else-if="type === 'B'">
+        B
+    </div>
+    <div v-else-if="type === 'C'">
+        C
+    </div>
+    <div v-else>
+        Not A/B/C
+    </div>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            flag: false,
+            type: 'B'
+        }
+    })
+</script>
+</body>
+</html>
