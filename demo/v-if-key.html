@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>learn vue</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>
+        <template v-if="logintype === 'username'">
+            <label>Username</label>
+            <input type="text" placeholder="Enter your username">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input type="text" placeholder="Enter your email address">
+        </template>
+    </div>
+    <button @click="toggle" class="btn btn-success" >toggle login type</button>
+    <!--key-->
+    <div>
+        <template v-if="logintype === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input">
+        </template>
+    </div>
+    <button @click="toggle" class="btn btn-success" >toggle login type</button>
+</div>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            logintype: 'username'
+        },
+        methods: {
+            toggle: function () {
+                if(this.logintype == 'username') {
+                    this.logintype = 'email';
+                }else{
+                    this.logintype = 'username';
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <span v-once>{{ msg }}</span>   <!--只能执行一次性的插值-->
+    <input class="form-control" type="text" v-model="msg">
+    <div v-html="rawHtml"></div>
+
+    <div :id="dynamicId"></div>   <!--<div id="divElement"></div>-->
+
+    <button class="btn btn-default" :disabled="someDynamicCondition">按钮</button>
+
+    <p v-if="seen">Now you see me</p>
+    <!-- v-if 指令将根据表达式 seen 的值的真假来移除/插入 <p> 元素 -->
+    <a :href="url" target="_blank">v-bind:href参数</a>
+    <!-- 在这里 href 是参数，告知 v-bind 指令将该元素的 href 属性与表达式 url 的值绑定 -->
+    <a href="javascript:;" @click="doSomething">点我</a>
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            msg: 'hello',
+            rawHtml: '<b>welcome</b>',
+            dynamicId: 'divElement',
+            someDynamicCondition: true,
+            seen: true,
+            url: 'http://www.baidu.com'
+        },
+        methods:{
+            doSomething: function () {
+                alert(1);
+            }
+        }
+    });
+</script>
+</body>
+</html>
